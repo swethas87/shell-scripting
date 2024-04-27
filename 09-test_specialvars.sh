@@ -8,5 +8,5 @@ echo "Home directory of current user: $HOME"
 echo "Which user: $USER"
 echo "Hostname: $HOSTNAME"
 echo "ProcessId of current shell script: $$"
-sleep 360
+sleep 20 &
 echo "ProcessId of the last executed command: $!"
