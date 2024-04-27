@@ -9,3 +9,4 @@ echo "Which user: $USER"
 echo "Hostname: $HOSTNAME"
 echo "ProcessId of current shell script: $$"
 sleep 360
+echo "ProcessId of the last executed command: $!"
