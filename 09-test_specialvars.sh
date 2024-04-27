@@ -1,3 +1,4 @@
 #!/bin/bash
 
-echo "num of vars used in the script are: :$@"
+echo "all vars used in the script are:$@"
+echo "num of vars passed: $#"
