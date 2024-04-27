@@ -1,7 +1,7 @@
 #!/bin/bash
 USERID=$(id -u)
 
-VALIDATE(){
+validate(){
     echo "Exit status is $1"
     echo "$2"
 
