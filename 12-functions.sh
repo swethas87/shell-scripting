@@ -1,7 +1,7 @@
 #!/bin/bash
 USERID=$(id -u)
 TIMESTAMP=$(date +%F-%H-%M-%S)
-SCRIPTNAME=$($0 | cut -d "." -f1)
+SCRIPTNAME=$(echo $0 | cut -d "." -f1)
 LOGFILE=/tmp/$SCRIPTNAME-$TIMESTAMP.log
 
 validate(){
@@ -11,6 +11,7 @@ validate(){
         exit 1
     else
         echo "$2 is a success"
+    fi
 }
 if [ $USERID -ne 0 ]
 then
