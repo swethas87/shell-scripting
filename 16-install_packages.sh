@@ -6,6 +6,7 @@ LOGFILE=/tmp/$SCRIPTNAME-$TIMESTAMP.log
 R="\e[31m"
 G="\e[32m"
 N="\e[0m"
+Y="\e[33m"
 
 if [ $USERID -ne 0 ]
 then
@@ -31,8 +32,10 @@ do
    dnf list installed $i &>>$LOGFILE
    if [ $? -eq 0 ]
    then
-        echo "$i Already installed.. SKIPPING"
+        echo -e "$i Already installed..$Y SKIPPING $N"
     else
-        echo "$i not installed.. Need to install"
+        echo "$i not installed.. $R Need to install $N"
+        dnf install $i -y &>>LOGFILE
+        VALIDATE $? "installation of $i"
     fi
 done
