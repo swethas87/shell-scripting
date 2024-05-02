@@ -7,6 +7,8 @@ R="\e[31m"
 G="\e[32m"
 N="\e[0m"
 Y="\e[33m"
+echo "Enter Mysql root password"
+read -s mysqlrootpassword
 
 if [ $USERID -ne 0 ]
 then
@@ -40,10 +42,10 @@ validate $? "Start Mysql server"
 #validate $? "Setting root password"
 
 #to make this pgm idempotent
-mysql -h 44.223.31.51 -uroot -pExpenseApp@1 -e 'show databases;'
+mysql -h 44.223.31.51 -uroot -p${mysqlrootpassword} -e 'show databases;'
 if [ $? -ne 0 ]
 then 
-    mysql_secure_installation --set-root-pass ExpenseApp@1 &>>$LOGFILE
+    mysql_secure_installation --set-root-pass ${mysqlrootpassword} &>>$LOGFILE
     validate $? "Mysql Root password setup"
 else
     echo -e "Mysql root password already setup .. $Y  SKIPPING $N"
