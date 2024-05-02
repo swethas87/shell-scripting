@@ -35,5 +35,16 @@ validate $? "Enabling Mysql server"
 systemctl start mysqld &>>$LOGFILE
 validate $? "Start Mysql server"
 
-mysql_secure_installation --set-root-pass ExpenseApp@1 &>>$LOGFILE
-validate $? "Setting root password"
+#nature of shell not being idempotency shown below
+#mysql_secure_installation --set-root-pass ExpenseApp@1 &>>$LOGFILE
+#validate $? "Setting root password"
+
+#to make this pgm idempotent
+mysql -h 44.223.31.51 -uroot -pExpenseApp@1 -e 'show databases;'
+if [ $? -ne 0 ]
+then 
+    mysql_secure_installation --set-root-pass ExpenseApp@1 &>>$LOGFILE
+    validate $? "Mysql Root password setup"
+else
+    echo -e "Mysql root password already setup .. $Y  SKIPPING $N"
+fi
