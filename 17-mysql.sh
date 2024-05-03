@@ -42,7 +42,7 @@ validate $? "Start Mysql server"
 #validate $? "Setting root password"
 
 #to make this pgm idempotent
-mysql -h 44.223.31.51 -uroot -p${mysqlrootpassword} -e 'show databases;'
+mysql -h 172.31.19.210 -uroot -p${mysqlrootpassword} -e 'show databases;'
 if [ $? -ne 0 ]
 then 
     mysql_secure_installation --set-root-pass ${mysqlrootpassword} &>>$LOGFILE
