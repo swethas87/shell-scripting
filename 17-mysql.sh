@@ -38,7 +38,7 @@ systemctl start mysqld &>>$LOGFILE
 validate $? "Start Mysql server"
 
 #nature of shell not being idempotency shown below
-#mysql_secure_installation --set-root-pass ExpenseApp@1 &>>$LOGFILE
+
 #validate $? "Setting root password"
 
 #to make this pgm idempotent
