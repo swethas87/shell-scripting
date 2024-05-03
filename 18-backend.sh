@@ -37,7 +37,7 @@ dnf install nodejs -y &>>$LOGFILE
 validate $? "installing nodejs"
 
 id expense
-if [ $? -ne 0]
+if [ $? -ne 0 ]
 then
     useradd expense &>>$LOGFILE
     validate $? "add expense user"
@@ -71,3 +71,6 @@ validate $? "validate mysql installation"
 
 mysql -h 172.31.19.210 -uroot -p{mysqlrootpassword} < /app/schema/backend.sql &>>LOGFILE
 validate $? "load schema"
+
+systemctl restart backend &>>LOGFILE
+validate $? "restart backend"
