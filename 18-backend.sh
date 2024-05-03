@@ -43,7 +43,8 @@ else
     echo -e "user already exists... $R SKIPPING $N"
 fi
 
-mkdir /app
+mkdir -p /app
+validate $? "Creating app directory"
 
 curl -o /tmp/backend.zip https://expense-builds.s3.us-east-1.amazonaws.com/expense-backend-v2.zip
 cd /app
