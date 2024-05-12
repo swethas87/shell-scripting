@@ -7,8 +7,6 @@ R="\e[31m"
 G="\e[32m"
 N="\e[0m"
 Y="\e[33m"
-echo "Enter Mysql root password"
-read mysqlrootpassword
 
 check_root(){
     if [ $USERID -ne 0 ]
@@ -19,6 +17,7 @@ check_root(){
         echo "you are super user"
     fi
 }
+
 validate(){
     if [ $1 -ne 0 ]
     then
