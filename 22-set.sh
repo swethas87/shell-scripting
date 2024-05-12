@@ -1,5 +1,7 @@
 #!/bin/bash
 
+set -e
+
 USERID=$(id -u)
 
 if [ $USERID -ne 0 ]
@@ -13,4 +15,4 @@ fi
 dnf install myshdhsql -y
 dnf install git -y
 
-echo"is script proceeding?"
+echo "is script proceeding?"
